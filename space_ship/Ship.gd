@@ -7,8 +7,6 @@ extends Node2D
 @onready var canon_fire_timer: Timer = $CanonFireTimer
 @onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
 
-
-
 func _ready() -> void:
 	canon_fire_timer.timeout.connect(fire_canons)
 
