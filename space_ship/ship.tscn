@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://br7gqd5yp8ifc"]
+[gd_scene load_steps=14 format=3 uid="uid://br7gqd5yp8ifc"]
 
 [ext_resource type="Texture2D" uid="uid://v4vvvkk7epxx" path="res://assets/sprites/ship.png" id="1_ljblw"]
 [ext_resource type="Script" path="res://space_ship/Ship.gd" id="1_rbnh5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://components/PositionClampComponent.gd" id="5_7ggmr"]
 [ext_resource type="Script" path="res://components/SpawnerComponent.gd" id="7_14o7e"]
 [ext_resource type="PackedScene" uid="uid://bsxa388afr0x1" path="res://projectiles/Laser.tscn" id="8_pe1x3"]
+[ext_resource type="Script" path="res://components/ScaleSpriteComponent.gd" id="9_vustj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw5n5"]
 atlas = ExtResource("1_ljblw")
@@ -75,10 +76,16 @@ position = Vector2(-4, -4)
 [node name="CanonRight" type="Marker2D" parent="."]
 position = Vector2(4, -4)
 
-[node name="SpawnerComponent" type="Node2D" parent="CanonRight"]
+[node name="SpawnerComponent" type="Node2D" parent="."]
+position = Vector2(4, -4)
 script = ExtResource("7_14o7e")
 scene = ExtResource("8_pe1x3")
 
 [node name="CanonFireTimer" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
+
+[node name="ScaleSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_vustj")
+sprite = NodePath("../AnimatedSprite2D")
+scale_amount = Vector2(1.1, 1.1)
