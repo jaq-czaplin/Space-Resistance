@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://br7gqd5yp8ifc"]
+[gd_scene load_steps=28 format=3 uid="uid://br7gqd5yp8ifc"]
 
 [ext_resource type="Texture2D" uid="uid://v4vvvkk7epxx" path="res://assets/sprites/ship.png" id="1_ljblw"]
 [ext_resource type="Script" path="res://space_ship/Ship.gd" id="1_rbnh5"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://bsxa388afr0x1" path="res://projectiles/Laser.tscn" id="8_pe1x3"]
 [ext_resource type="Script" path="res://components/ScaleComponent.gd" id="9_bbsdo"]
 [ext_resource type="Texture2D" uid="uid://68uq78d6ly42" path="res://assets/sprites/ship_flame.png" id="10_6cctl"]
+[ext_resource type="Script" path="res://components/StatsComponent.gd" id="12_i8fkv"]
+[ext_resource type="Script" path="res://components/HurtboxComponent.gd" id="13_kfcw0"]
+[ext_resource type="Script" path="res://components/HurtComponent.gd" id="14_brffo"]
+[ext_resource type="PackedScene" uid="uid://c7ff55swu3pfc" path="res://effects/ExplosionEffect.tscn" id="15_hdaay"]
+[ext_resource type="Script" path="res://components/DestroyedComponent.gd" id="16_152gq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw5n5"]
 atlas = ExtResource("1_ljblw")
@@ -161,3 +166,28 @@ autostart = true
 script = ExtResource("9_bbsdo")
 sprite = NodePath("../Body")
 scale_amount = Vector2(1.1, 1.1)
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("12_i8fkv")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("13_kfcw0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent"]
+polygon = PackedVector2Array(-8, 2, -3, -2, -3, -4, -1, -7, 1, -7, 3, -4, 3, -2, 8, 2, 8, 4, 5, 4, 5, 7, -5, 7, -5, 4, -8, 4)
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("14_brffo")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="ExplosionSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("7_14o7e")
+scene = ExtResource("15_hdaay")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("16_152gq")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../ExplosionSpawnerComponent")

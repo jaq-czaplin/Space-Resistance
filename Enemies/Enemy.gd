@@ -8,10 +8,12 @@ class_name Enemy extends Node2D
 @onready var shake_component: ShakeComponent = $ShakeComponent
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var destroyed_component: DestroyedComponent = $DestroyedComponent
 
 func _ready() -> void:
 	visible_on_screen_notifier.screen_exited.connect(destroy)
 	hurtbox_component.hurt.connect(hurt)
+	hitbox_component.hit_hurtbox.connect(destroyed_component.destroy.unbind(1)) # Enemy hit player ship
 	stats_component.no_health.connect(destroy)
 
 func destroy() -> void:

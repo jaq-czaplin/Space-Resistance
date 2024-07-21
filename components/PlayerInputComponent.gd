@@ -1,5 +1,4 @@
-class_name PlayerInputComponent
-extends Node
+class_name PlayerInputComponent extends Node
 
 @export var move_component: MoveComponent
 @export var move_stats: MoveStatsResource

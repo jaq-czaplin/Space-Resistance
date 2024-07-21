@@ -1,5 +1,4 @@
-class_name Ship
-extends Node2D
+class_name Ship extends Node2D
 
 @onready var canon_left: Marker2D = $CanonLeft
 @onready var canon_right: Marker2D = $CanonRight
