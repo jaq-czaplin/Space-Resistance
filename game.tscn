@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cctn1paoxp64d"]
+[gd_scene load_steps=6 format=3 uid="uid://cctn1paoxp64d"]
 
 [ext_resource type="PackedScene" uid="uid://bno1kjwrxm1sx" path="res://effects/SpaceBackground.tscn" id="1_28qib"]
+[ext_resource type="Script" path="res://Game.gd" id="1_fjeyc"]
 [ext_resource type="PackedScene" uid="uid://br7gqd5yp8ifc" path="res://space_ship/Ship.tscn" id="1_it0dy"]
 [ext_resource type="PackedScene" uid="uid://f6vogu1hr22k" path="res://Enemies/GreenEnemy.tscn" id="3_4lld3"]
 [ext_resource type="PackedScene" uid="uid://6j7ymiah84fd" path="res://Enemies/EnemyGenerator.tscn" id="3_j06xb"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_fjeyc")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_28qib")]
 
