@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5wv7opsiprs1"]
+
+[ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_e02rt"]
+[ext_resource type="Script" path="res://components/MoveComponent.gd" id="1_et04a"]
+[ext_resource type="Script" path="res://components/StatsComponent.gd" id="2_27mgn"]
+[ext_resource type="Script" path="res://components/ScaleComponent.gd" id="3_802fk"]
+[ext_resource type="Script" path="res://components/FlashComponent.gd" id="4_7fje5"]
+[ext_resource type="Script" path="res://components/ShakeComponent.gd" id="5_m8r05"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://effects/white_flash_material.tres" id="6_hoydv"]
+[ext_resource type="Script" path="res://components/HitboxComponent.gd" id="8_gry56"]
+[ext_resource type="Script" path="res://components/HurtboxComponent.gd" id="9_wprrd"]
+[ext_resource type="Script" path="res://components/HurtComponent.gd" id="10_fpx1s"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_e02rt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("1_et04a")
+actor = NodePath("..")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_27mgn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_802fk")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_7fje5")
+flash_material = ExtResource("6_hoydv")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("5_m8r05")
+node = NodePath("../AnimatedSprite2D")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("9_wprrd")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("8_gry56")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("10_fpx1s")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")

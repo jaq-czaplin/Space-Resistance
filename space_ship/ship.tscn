@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://components/PositionClampComponent.gd" id="5_7ggmr"]
 [ext_resource type="Script" path="res://components/SpawnerComponent.gd" id="7_14o7e"]
 [ext_resource type="PackedScene" uid="uid://bsxa388afr0x1" path="res://projectiles/Laser.tscn" id="8_pe1x3"]
-[ext_resource type="Script" path="res://components/ScaleSpriteComponent.gd" id="9_vustj"]
+[ext_resource type="Script" path="res://components/ScaleComponent.gd" id="9_bbsdo"]
 [ext_resource type="Texture2D" uid="uid://68uq78d6ly42" path="res://assets/sprites/ship_flame.png" id="10_6cctl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw5n5"]
@@ -157,7 +157,7 @@ scene = ExtResource("8_pe1x3")
 wait_time = 0.4
 autostart = true
 
-[node name="ScaleSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("9_vustj")
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_bbsdo")
 sprite = NodePath("../Body")
 scale_amount = Vector2(1.1, 1.1)

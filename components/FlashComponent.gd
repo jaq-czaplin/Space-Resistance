@@ -1,4 +1,4 @@
-class_name FlashSpriteComponent extends Node
+class_name FlashComponent extends Node
 
 @export var flash_material: ShaderMaterial
 @export var sprite: CanvasItem
