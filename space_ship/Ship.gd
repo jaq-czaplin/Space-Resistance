@@ -10,7 +10,13 @@ extends Node2D
 func _ready() -> void:
 	canon_fire_timer.timeout.connect(fire_canons)
 
+func _process(delta: float) -> void:
+	animate_ship()
+
 func fire_canons() -> void:
 	spawner_component.spawn(canon_left.global_position, get_parent())
 	spawner_component.spawn(canon_right.global_position, get_parent())
 	scale_sprite_component.tween_scale()
+
+func animate_ship() -> void:
+	pass
