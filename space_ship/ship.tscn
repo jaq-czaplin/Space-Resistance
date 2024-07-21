@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://br7gqd5yp8ifc"]
+[gd_scene load_steps=9 format=3 uid="uid://br7gqd5yp8ifc"]
 
 [ext_resource type="Texture2D" uid="uid://v4vvvkk7epxx" path="res://assets/sprites/ship.png" id="1_ljblw"]
 [ext_resource type="Script" path="res://components/MoveComponent.gd" id="2_g4ol5"]
 [ext_resource type="Script" path="res://components/PlayerInputComponent.gd" id="3_2sv2l"]
+[ext_resource type="Resource" uid="uid://benu3srl6cdk7" path="res://space_ship/ship_move_stats.tres" id="4_omug7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw5n5"]
 atlas = ExtResource("1_ljblw")
@@ -57,3 +58,4 @@ actor = NodePath("..")
 [node name="PlayerInputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
 script = ExtResource("3_2sv2l")
 move_component = NodePath("../MoveComponent")
+move_stats = ExtResource("4_omug7")
