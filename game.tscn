@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cctn1paoxp64d"]
+[gd_scene load_steps=10 format=3 uid="uid://cctn1paoxp64d"]
 
 [ext_resource type="PackedScene" uid="uid://bno1kjwrxm1sx" path="res://effects/SpaceBackground.tscn" id="1_28qib"]
 [ext_resource type="Script" path="res://Game.gd" id="1_fjeyc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6j7ymiah84fd" path="res://enemies/EnemyGenerator.tscn" id="3_j06xb"]
 [ext_resource type="LabelSettings" uid="uid://cq1ys1a5mlx1a" path="res://assets/fonts/default_label_settings.tres" id="6_apedn"]
 [ext_resource type="PackedScene" uid="uid://bf0mta0q81mdk" path="res://enemies/YellowEnemy.tscn" id="7_jt6f2"]
+[ext_resource type="PackedScene" uid="uid://cltryn4vvdbox" path="res://enemies/PinkEnemy.tscn" id="9_kxiwb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjeyc")
@@ -29,3 +30,4 @@ position = Vector2(80, 216)
 [node name="EnemyGenerator" parent="." instance=ExtResource("3_j06xb")]
 green_enemy_scene = ExtResource("3_4lld3")
 yellow_enemy_scene = ExtResource("7_jt6f2")
+pink_enemy_scene = ExtResource("9_kxiwb")
