@@ -1,7 +1,7 @@
 class_name GemOver extends Control
 
-const SAVE_PATH = "user://stats.cfg"
-const TEST_SAVE_PATH = "res://stats.cfg"
+const SAVE_PATH = "user://space_resistance_stats.cfg"
+const TEST_SAVE_PATH = "res://space_resistance_stats.cfg"
 
 var save_path = SAVE_PATH
 
