@@ -12,6 +12,11 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="YellowEnemySpawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
 [node name="EnemySpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("2_ie2b4")
 scene = ExtResource("3_vme5t")

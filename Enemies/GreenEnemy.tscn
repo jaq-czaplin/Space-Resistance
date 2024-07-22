@@ -61,3 +61,4 @@ shape = SubResource("CircleShape2D_14ve5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("CircleShape2D_t3n3i")
+debug_color = Color(0.889827, 0.249964, 0.535409, 0.42)
