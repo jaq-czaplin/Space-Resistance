@@ -28,6 +28,7 @@ vertical_alignment = 1
 position = Vector2(80, 216)
 
 [node name="EnemyGenerator" parent="." instance=ExtResource("3_j06xb")]
+game_stats = ExtResource("2_ofero")
 green_enemy_scene = ExtResource("3_4lld3")
 yellow_enemy_scene = ExtResource("7_jt6f2")
 pink_enemy_scene = ExtResource("9_kxiwb")
