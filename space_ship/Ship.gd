@@ -10,7 +10,7 @@ class_name Ship extends Node2D
 func _ready() -> void:
 	canon_fire_timer.timeout.connect(fire_canons)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	animate_ship()
 
 func fire_canons() -> void:

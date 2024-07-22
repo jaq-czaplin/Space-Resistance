@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsxa388afr0x1"]
+
+[ext_resource type="Texture2D" uid="uid://n3ppks1u8p2" path="res://space_ship/assets/laser_small.png" id="1_8sty6"]
+[ext_resource type="Script" path="res://space_ship/LaserProjectile.gd" id="1_pgmse"]
+[ext_resource type="Script" path="res://components/MoveComponent.gd" id="2_al31y"]
+[ext_resource type="Script" path="res://components/ScaleComponent.gd" id="4_ou47t"]
+[ext_resource type="Script" path="res://components/FlashComponent.gd" id="5_8edia"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://effects/white_flash/white_flash_material.tres" id="6_w5edq"]
+[ext_resource type="Script" path="res://components/HitboxComponent.gd" id="7_gx6ex"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo7bt"]
+radius = 2.0
+height = 6.0
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_pgmse")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8sty6")
+
+[node name="MoveComponent" type="Node" parent="."]
+script = ExtResource("2_al31y")
+velocity = Vector2(0, -200)
+
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.2, 0.4)
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_ou47t")
+sprite = NodePath("../Sprite2D")
+scale_amount = Vector2(2, 2)
+scale_duration = 0.6
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_8edia")
+flash_material = ExtResource("6_w5edq")
+sprite = NodePath("../Sprite2D")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_gx6ex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_xo7bt")

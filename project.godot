@@ -12,14 +12,18 @@ config_version=5
 
 config/name="Space Resistance"
 config/version="1.0"
-run/main_scene="res://menus/Menu.tscn"
+run/main_scene="res://scenes/main_menu/Menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://misc/default_bus_layout.tres"
+
 [autoload]
 
-ResourceStash="*res://ResourceStash.gd"
-MusicPlayer="*res://MusicPlayer.tscn"
+ResourceStash="*res://misc/ResourceStash.gd"
+MusicPlayer="*res://misc/MusicPlayer.tscn"
 
 [display]
 

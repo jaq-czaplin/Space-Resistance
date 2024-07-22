@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bihe2qcf5jcf"]
-
-[ext_resource type="AudioStream" uid="uid://cg0tjm5nnwtqk" path="res://assets/sounds/music.ogg" id="1_wsxmv"]
-
-[node name="MusicPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_wsxmv")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"

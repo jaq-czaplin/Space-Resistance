@@ -2,7 +2,7 @@ class_name HitboxComponent extends Area2D
 
 signal hit_hurtbox(hurtbox)
 
-@export var damage = 1.0
+@export var damage: int = 1
 
 func _ready():
 	area_entered.connect(_on_hurtbox_entered)
