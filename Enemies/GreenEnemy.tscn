@@ -1,18 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://f6vogu1hr22k"]
 
-[ext_resource type="PackedScene" uid="uid://c5wv7opsiprs1" path="res://Enemies/Enemy.tscn" id="1_vq6c8"]
-[ext_resource type="Texture2D" uid="uid://ewowojni6htf" path="res://assets/sprites/green_enemy.png" id="2_xj7pe"]
+[ext_resource type="PackedScene" uid="uid://c5wv7opsiprs1" path="res://enemies/Enemy.tscn" id="1_o5on4"]
+[ext_resource type="Texture2D" uid="uid://ewowojni6htf" path="res://assets/sprites/green_enemy.png" id="2_xrwd7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcgwa"]
-atlas = ExtResource("2_xj7pe")
+atlas = ExtResource("2_xrwd7")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0o0c"]
-atlas = ExtResource("2_xj7pe")
+atlas = ExtResource("2_xrwd7")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2v401"]
-atlas = ExtResource("2_xj7pe")
+atlas = ExtResource("2_xrwd7")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7vdgh"]
@@ -38,7 +38,7 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3n3i"]
 radius = 6.08276
 
-[node name="GreenEnemy" instance=ExtResource("1_vq6c8")]
+[node name="GreenEnemy" instance=ExtResource("1_o5on4")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_7vdgh")

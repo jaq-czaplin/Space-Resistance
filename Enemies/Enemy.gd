@@ -9,12 +9,15 @@ class_name Enemy extends Node2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var destroyed_component: DestroyedComponent = $DestroyedComponent
+@onready var score_component: ScoreComponent = $ScoreComponent
+
 
 func _ready() -> void:
 	visible_on_screen_notifier.screen_exited.connect(destroy)
 	hurtbox_component.hurt.connect(hurt)
 	hitbox_component.hit_hurtbox.connect(destroyed_component.destroy.unbind(1)) # Enemy hit player ship
 	stats_component.no_health.connect(destroy)
+	stats_component.no_health.connect(add_score)
 
 func destroy() -> void:
 	queue_free()
@@ -23,3 +26,6 @@ func hurt(hit_box: HitboxComponent) -> void:
 	scale_component.tween_scale()
 	flash_component.flash()
 	shake_component.tween_shake()
+
+func add_score() -> void:
+	score_component.adjust_score()

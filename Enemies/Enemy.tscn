@@ -1,66 +1,72 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5wv7opsiprs1"]
+[gd_scene load_steps=16 format=3 uid="uid://c5wv7opsiprs1"]
 
-[ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_e02rt"]
-[ext_resource type="Script" path="res://components/MoveComponent.gd" id="1_et04a"]
-[ext_resource type="Script" path="res://components/StatsComponent.gd" id="2_27mgn"]
-[ext_resource type="Script" path="res://components/ScaleComponent.gd" id="3_802fk"]
-[ext_resource type="Script" path="res://components/FlashComponent.gd" id="4_7fje5"]
-[ext_resource type="Script" path="res://components/ShakeComponent.gd" id="5_m8r05"]
-[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://effects/white_flash_material.tres" id="6_hoydv"]
-[ext_resource type="Script" path="res://components/HitboxComponent.gd" id="8_gry56"]
-[ext_resource type="Script" path="res://components/HurtboxComponent.gd" id="9_wprrd"]
-[ext_resource type="Script" path="res://components/HurtComponent.gd" id="10_fpx1s"]
-[ext_resource type="Script" path="res://components/SpawnerComponent.gd" id="11_61cqr"]
-[ext_resource type="PackedScene" uid="uid://c7ff55swu3pfc" path="res://effects/ExplosionEffect.tscn" id="12_rqvvs"]
-[ext_resource type="Script" path="res://components/DestroyedComponent.gd" id="13_1sufh"]
+[ext_resource type="Script" path="res://enemies/Enemy.gd" id="1_3ter0"]
+[ext_resource type="Script" path="res://components/MoveComponent.gd" id="2_m37fa"]
+[ext_resource type="Script" path="res://components/StatsComponent.gd" id="3_5hcem"]
+[ext_resource type="Script" path="res://components/ScaleComponent.gd" id="4_rhae3"]
+[ext_resource type="Script" path="res://components/FlashComponent.gd" id="5_sgjgn"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://effects/white_flash_material.tres" id="6_wye26"]
+[ext_resource type="Script" path="res://components/ShakeComponent.gd" id="7_usjsp"]
+[ext_resource type="Script" path="res://components/HurtboxComponent.gd" id="8_pfrca"]
+[ext_resource type="Script" path="res://components/HitboxComponent.gd" id="9_3rfhs"]
+[ext_resource type="Script" path="res://components/HurtComponent.gd" id="10_3c2cs"]
+[ext_resource type="Script" path="res://components/SpawnerComponent.gd" id="11_g7sxf"]
+[ext_resource type="PackedScene" uid="uid://c7ff55swu3pfc" path="res://effects/ExplosionEffect.tscn" id="12_xn60j"]
+[ext_resource type="Script" path="res://components/DestroyedComponent.gd" id="13_11kly"]
+[ext_resource type="Script" path="res://components/ScoreComponent.gd" id="14_3d1as"]
+[ext_resource type="Resource" uid="uid://yarqf52ii7y1" path="res://game_stats.tres" id="15_vycrg"]
 
 [node name="Enemy" type="Node2D"]
-script = ExtResource("1_e02rt")
+script = ExtResource("1_3ter0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
-script = ExtResource("1_et04a")
+script = ExtResource("2_m37fa")
 actor = NodePath("..")
 
 [node name="StatsComponent" type="Node" parent="."]
-script = ExtResource("2_27mgn")
+script = ExtResource("3_5hcem")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("3_802fk")
+script = ExtResource("4_rhae3")
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
-script = ExtResource("4_7fje5")
-flash_material = ExtResource("6_hoydv")
+script = ExtResource("5_sgjgn")
+flash_material = ExtResource("6_wye26")
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
-script = ExtResource("5_m8r05")
+script = ExtResource("7_usjsp")
 node = NodePath("../AnimatedSprite2D")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("9_wprrd")
+script = ExtResource("8_pfrca")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 0
-script = ExtResource("8_gry56")
+script = ExtResource("9_3rfhs")
 
 [node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
-script = ExtResource("10_fpx1s")
+script = ExtResource("10_3c2cs")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 
 [node name="SpawnerComponent" type="Node2D" parent="."]
-script = ExtResource("11_61cqr")
-scene = ExtResource("12_rqvvs")
+script = ExtResource("11_g7sxf")
+scene = ExtResource("12_xn60j")
 
 [node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
-script = ExtResource("13_1sufh")
+script = ExtResource("13_11kly")
 actor = NodePath("..")
 stats_component = NodePath("../StatsComponent")
 destroy_effect_spawner_component = NodePath("../SpawnerComponent")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("14_3d1as")
+game_stats = ExtResource("15_vycrg")

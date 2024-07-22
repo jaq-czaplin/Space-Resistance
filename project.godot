@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Space Resistance"
-run/main_scene="res://Menus/Menu.tscn"
+run/main_scene="res://menus/Menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/icon.svg"
+
+[autoload]
+
+ResourceStash="*res://ResourceStash.gd"
 
 [display]
 
