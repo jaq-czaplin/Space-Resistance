@@ -43,4 +43,4 @@ func spawn_enemy(enemy_scene: PackedScene, timer: Timer, time_offset: float = 1.
 	timer.start(spawn_rate + randf_range(0.25, 0.5))
 	
 func _calculate_spawn_rate_from_score(score: float, time_offset: float) -> float:
-	return max(1.5, time_offset * 8 / (1.5 + (score + 1 / 10) * 0.1))
+	return max(1.1, time_offset * 8 / (1.5 + (score + 1 / 10) * 0.1))

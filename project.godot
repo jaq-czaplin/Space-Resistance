@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 ResourceStash="*res://ResourceStash.gd"
+MusicPlayer="*res://MusicPlayer.tscn"
 
 [display]
 
